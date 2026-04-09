@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-header">
+    <h1>All Tickets</h1>
+    <a href="{{ url_for('submit_ticket') }}" class="btn btn-primary">+ New Ticket</a>
+</div>
+
+{% if tickets %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ticket in tickets %}
+        <tr>
+            <td>{{ ticket['id'] }}</td>
+            <td>{{ ticket['name'] }}</td>
+            <td>{{ ticket['category'] }}</td>
+            <td><span class="badge badge-{{ ticket['priority'].lower() }}">{{ ticket['priority'] }}</span></td>
+            <td><span class="badge badge-{{ ticket['status'].lower() }}">{{ ticket['status'] }}</span></td>
+            <td>{{ ticket['created_at'] }}</td>
+            <td><a href="{{ url_for('view_ticket', ticket_id=ticket['id']) }}" class="btn btn-sm">View</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="empty-state">
+    <p>No tickets yet. <a href="{{ url_for('submit_ticket') }}">Submit the first one!</a></p>
+</div>
+{% endif %}
+{% endblock %}

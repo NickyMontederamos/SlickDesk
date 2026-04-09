@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="page-header">
+    <h1>Dashboard</h1>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-number">{{ total }}</div>
+        <div class="stat-label">Total Tickets</div>
+    </div>
+    <div class="stat-card open">
+        <div class="stat-number">{{ open_tickets }}</div>
+        <div class="stat-label">Open Tickets</div>
+    </div>
+    <div class="stat-card resolved">
+        <div class="stat-number">{{ resolved }}</div>
+        <div class="stat-label">Resolved</div>
+    </div>
+    <div class="stat-card assets">
+        <div class="stat-number">{{ total_assets }}</div>
+        <div class="stat-label">Total Assets</div>
+    </div>
+</div>
+
+<div class="quick-actions">
+    <h2>Quick Actions</h2>
+    <a href="{{ url_for('submit_ticket') }}" class="btn btn-primary">+ New Ticket</a>
+    <a href="{{ url_for('add_asset') }}" class="btn btn-secondary">+ Add Asset</a>
+</div>
+{% endblock %}
