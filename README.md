@@ -91,4 +91,4 @@ SlickDesk/
 
 ---
 
-*Built as a pre-employment portfolio project before joining Accenture as a Packaged App Development Associate — May 2026.*
+*Built as a portfolio project — May 2026.*
